@@ -1,0 +1,67 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<div style='margin: 60px;'>
+  <%= link_to 'Back to home', root_path,  class: 'btn-treehouse2'%>
+<%= link_to 'Ajouter un user', new_user_path, class: 'btn-treehouse'%>
+
+
+</div> 
+
+
+<div class="container">
+  <div class="row">
+    
+        
+        <div class="col-md-12">
+        <h4>Liste des inscrits</h4>
+        <div class="table-responsive">
+
+                
+              <table id="mytable" class="table table-bordred table-striped">
+                    <% @users.each do |user| %>
+                   <thead>
+                   
+                  
+                   <th>Username</th>
+                    <th>Bio</th>
+                     <th>Email</th>
+
+
+                      <th>Edit</th>                    
+                       <th>Delete</th>
+
+                   </thead>
+    <tbody>
+    
+    <tr>
+    <td><%= user.username %></td>
+    <td><%= user.bio %></td>
+    <td><%= user.email %></td>
+
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><%= link_to edit_user_path(user), class: "btn btn-primary btn-xs" do %>
+    <i class="glyphicon glyphicon-pencil"></i>
+<% end %>  </p></td>
+
+
+    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><%= link_to user, :method => :delete, :confirm => "You sure?",
+                                :title => "Delete #{user.username}", :class => "btn btn-danger btn-xs" do %>
+                                    
+                                    <i class="glyphicon glyphicon-trash"></i>
+
+<% end %>
+</p></td>
+    </tr>
+    
+
+  
+
+
+
+    </tbody>
+        
+</table>
+
+
+<% end %>
